@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Comp 425 Homework</title>
+    <link rel="stylesheet" href="../standard.css" type="text/css"/>
+    <base target="_top"/>
+    <style>
+      ol > li { margin-bottom: 4em; }
+      ol ol > li { margin-bottom: 0em; margin-top: 0.5em; }
+      ol { list-style-type: decimal; }
+      ol ol { list-style-type: lower-alpha; }
+    </style>
+  </head>
+  <body>
+    <p>
+      For this homework assignment we are going to add up all the numbers in
+      an array of integers. However, we are going to speed up this task by
+      dividing it up among multiple threads.
+    </p>
+    <p>
+      You must write your program <em>exactly</em> as described below.  You
+      may write your program so that it only works on an array of integers
+      (i.e., the iterator type is always pointer and the data type is always
+      integer&mdash;as described below).  Or, demonstrate your code-fu by
+      writing the program as templates that take any iterator and data type.
+    </p>
+    <ol>
+      <li>
+        Write a function which takes two pointers-to-int and a reference to an
+        int variable.  The function should add up all the numbers between the
+        two pointers (from the start, up to but not including the last) and
+        store the answer in the reference variable.
+      </li>
+      <li>
+        Write a function which takes two pointers-to-int and a reference to an
+        int variable.  The function should create a thread which will add up
+        all the numbers between the two pointers (using the function you just
+        wrote).  Return the thread you created.
+      </li>
+      <li>
+        Write a function which takes two pointers-to-int and returns the sum
+        of all the numbers between the two pointers.  It must do this by
+        <ol>
+          <li>
+            Decide how many threads <i>n</i> the hardware supports.  (If it
+            cannot be determined, assume <i>n</i> = 2.)
+          </li>
+          <li>
+            Divide the range of numbers you were given into <i>n</i> subranges.
+          </li>
+          <li>
+            Create an array/vector of <i>n</i> integers to hold the sums of
+            the <i>n</i> subranges.
+          </li>
+          <li>
+            Create <i>n</i> - 1 threads to add up <i>n</i> - 1 of the subranges.
+          </li>
+          <li>
+            Add up the last subrange yourself.
+          </li>
+          <li>
+            Once all threads have finished, return the sum of the sums.
+          </li>
+          <li>
+            Use the functions you wrote in (1) and (2) wherever possible.
+          </li>
+        </ol>
+      </li>
+      <li>
+        Write a <code>main</code> function that demonstrates how your function
+        works by adding up an array of numbers.
+      </li>
+    </ol>
+    <p>
+      You might want to use some of these functions:
+    </p>
+    <ul>
+      <li>
+        <a href="http://en.cppreference.com/w/cpp/algorithm/accumulate"><code>std::accumulate</code></a>
+      </li>
+      <li>
+        <a href="http://en.cppreference.com/w/cpp/iterator/distance"><code>std::distance</code></a>
+      </li>
+      <li>
+        <a href="http://en.cppreference.com/w/cpp/iterator/advance"><code>std::advance</code></a>
+      </li>
+    </ul>
+  </body>
+</html>
