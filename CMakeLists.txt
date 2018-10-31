@@ -3,4 +3,4 @@ project(adding_numbers)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(adding_numbers main.cpp)
+add_executable(adding_numbers src/main.cpp)
