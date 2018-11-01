@@ -27,7 +27,7 @@ void sum(T *start, T *end, T &sumOfRange) {
 
 template<typename T>
 thread sumInThread(T *start, T *end, T &sumOfRange) {
-    return move(thread(sum<int>, start, end, ref(sumOfRange)));
+    return thread(sum<int>, start, end, ref(sumOfRange));
 }
 
 int getNumberOfThreads() {
@@ -107,7 +107,8 @@ int main() {
             {0},
             {-1, -2, -3},
             {1, 2, 3, 4},
-            {1, 2, 3}
+            {1, 2, 3},
+            {}
     };
     vector<int> expected = {
             78,
@@ -115,7 +116,8 @@ int main() {
             0,
             -6,
             10,
-            6
+            6,
+            0
     };
     for (int i = 0; i < tests.size(); i++) {
         int actual = multithreadedSum<int>(&*tests[i].begin(), &*tests[i].end());
